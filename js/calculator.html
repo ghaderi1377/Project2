@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+  </head>
+   <style>
+    body{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        background-color: rgb(238, 238, 216);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .claculator{
+        background-color: #fff;
+        width: 400px;
+        height: 430px;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 5px #ccc;
+        margin-top: 130px;
+    }
+    #myForm{
+        width: 100%;
+
+    }
+    .display{
+        background-color: #5cefb9;
+        width: 100%;
+        height: 100px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        align-items: center;
+    }
+    .display input{
+        pointer-events: none;
+        outline: 0;
+        background-color: transparent;
+        border-style: none;
+        height: 100%;
+        font-size: 50px;
+        overflow: hidden;
+        padding-left: 20px;
+        
+    }
+    .display input::-webkit-input-placeholder{
+      font-size: 50px;
+    }
+    input[type = "button"]{
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        margin: 3px;
+        font-size: 20px;
+        text-align: center;
+        background-color: #eceff0;
+        border-style: none;
+    }
+    h2{
+        display: inline-block;
+    }
+    .red{
+      background-color: red!important;
+      color: #fff;
+    }
+    .green{
+      background-color: rgb(15, 198, 15)!important;
+      color: #fff;
+    }
+    .numbersCalc{
+      margin: 10px 20px;
+    }
+  </style>
+  <body>
+    <section class="container claculator">
+      <form name="form" id="myForm">
+        <div class="display">
+          <input
+            type="text"
+            placeholder="0"
+            name="displayResult"
+            id="displayResult"
+          />
+        </div>
+        <div class="numbersCalc">
+          <input type="button" value="C" onclick="reset()" class="red" />
+        <h2>javascript Calculator</h2>
+        <div class="row">
+          <input type="button" value="7" name="b7" onclick="addToCalculator(b7.value)" />
+          <input type="button" value="8" name="b8" onclick="addToCalculator(b8.value)" />
+          <input type="button" value="9" name="b9" onclick="addToCalculator(b9.value)" />
+          <input type="button" value="+" name="addb" onclick="addToCalculator(addb.value)" />
+          <input type="button" value="|X|" name="abs" onclick="mathCalculator('abs')" />
+          <input type="button" value="r" name="round" onclick="mathCalculator('round')" />
+        </div>
+        <div class="row">
+          <input type="button" value="4" name="b4" onclick="addToCalculator(b4.value)" />
+          <input type="button" value="5" name="b5" onclick="addToCalculator(b5.value)" />
+          <input type="button" value="6" name="b6" onclick="addToCalculator(b6.value)" />
+          <input type="button" value="-" name="subb" onclick="addToCalculator(subb.value)" />
+          <input type="button" value="^" name="pow" onclick="mathCalculator('pow')" />
+          <input type="button" value="ce" name="ceil" onclick="mathCalculator('ceil')" />
+        </div>
+        <div class="row">
+          <input type="button" value="1" name="b1" onclick="addToCalculator(b1.value)" />
+          <input type="button" value="2" name="b2" onclick="addToCalculator(b2.value)" />
+          <input type="button" value="3" name="b3" onclick="addToCalculator(b3.value)" />
+          <input type="button" value="*" name="mulb" onclick="addToCalculator(mulb.value)" />
+          <input type="button" value="&radic;" name="sqrt" onclick="mathCalculator('sqrt')" />
+          <input type="button" value="fl" name="floor" onclick="mathCalculator('floor')" />
+        </div>
+        <div class="row">
+          <input type="button" value="0" name="b0" onclick="addToCalculatorb.value(b0.value)" />
+          <input type="button" value="00" name="b00" onclick="addToCalculator(b00.value)" />
+          <input type="button" value="000" name="b000" onclick="addToCalculator(b000.value)" />
+          <input type="button" value="." name="potb" onclick="addToCalculator(potb.value)" />
+          <input type="button" value="/" name="divb" onclick="addToCalculator(divb.value)" />
+          <input type="button" value="=" class="green" onclick="result()" />
+        </div>
+        </div>
+        
+      </form>
+    </section>
+    <script>
+      var powFlag = false;
+      function addToCalculator(value){
+        document.getElementById("displayResult").value += value;
+        if(powFlag){
+         var powNumbers = document.getElementById("displayResult").value.split("^");
+         document.getElementById("displayResult").value = Math.pow(powNumbers[0] , powNumbers[1]);
+         powFlag = false;
+
+        }
+      }
+      function reset(){
+        document.getElementById("displayResult").value = '';
+      }
+      function result(){
+        document.getElementById("displayResult").value = eval(document.getElementById("displayResult").value);
+      }
+      function mathCalculator(mathFunc){
+        if(mathFunc == 'pow'){
+          powFlag = true;
+          document.getElementById("displayResult").value += '^';
+        } else {
+        document.getElementById("displayResult").value = Math[mathFunc](document.getElementById("displayResult").value);
+
+        }      
+      }
+    </script>
+  </body>
+</html>
