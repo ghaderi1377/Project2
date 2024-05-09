@@ -14,7 +14,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    
     }
     .claculator{
         background-color: #fff;
@@ -47,7 +46,6 @@
         font-size: 50px;
         overflow: hidden;
         padding-left: 20px;
-        
     }
     .display input::-webkit-input-placeholder{
       font-size: 50px;
@@ -85,8 +83,7 @@
             type="text"
             placeholder="0"
             name="displayResult"
-            id="displayResult"
-          />
+            id="displayResult"/>
         </div>
         <div class="numbersCalc">
           <input type="button" value="C" onclick="reset()" class="red" />
@@ -124,7 +121,6 @@
           <input type="button" value="=" class="green" onclick="result()" />
         </div>
         </div>
-        
       </form>
     </section>
     <script>
@@ -135,7 +131,6 @@
          var powNumbers = document.getElementById("displayResult").value.split("^");
          document.getElementById("displayResult").value = Math.pow(powNumbers[0] , powNumbers[1]);
          powFlag = false;
-
         }
       }
       function reset(){
@@ -150,7 +145,6 @@
           document.getElementById("displayResult").value += '^';
         } else {
         document.getElementById("displayResult").value = Math[mathFunc](document.getElementById("displayResult").value);
-
         }      
       }
     </script>
